@@ -1,4 +1,4 @@
-"A simple vimrc that I give to people just starting to use Vim."
+"Simple vimrc that I give to people just starting to use Vim."
 "Lines beginning with a double quote are comments."
 
 " Basic settings
@@ -23,12 +23,18 @@ set smartindent "Remembers previous indent when creating new lines
 set expandtab
 set mouse=a 
 
+" visual stuff
+set cursorline "Horizontal Current Line
+set cursorcolumn "Verticle Current Line
+hi CursorLine cterm=None ctermbg=darkgray ctermfg=white
+
+
 " Search settings
 set hlsearch "Highlights search terms
 set showmatch "Highlights matching parentheses
 set ignorecase "Ignores case when searching
 set smartcase "Unless you put some caps in your search term
-
+set incsearch "Search as things are entered
 
 " Key mappings
 "Use jj instead of escape in insert mode
@@ -37,3 +43,5 @@ inoremap jj <Esc>`^
 
 "Turn on plugin & indentation support for specific filetypes
 filetype plugin indent on
+
+execute pathogen#infect()
