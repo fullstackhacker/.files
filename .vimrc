@@ -40,8 +40,32 @@ set incsearch "Search as things are entered
 "Use jj instead of escape in insert mode
 inoremap jj <Esc>`^
 
-
 "Turn on plugin & indentation support for specific filetypes
-filetype plugin indent on
+" ----------------------------------------------------------------------------
+"   Plug
+" ----------------------------------------------------------------------------
 
-execute pathogen#infect()
+" Create a plugged folder if it doesn't exist
+
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute 'mkdir -p ~/.vim/plugged'
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Colorschemes
+Plug 'captbaritone/molokai'
+
+" Fuzzy file opener
+Plug 'kien/ctrlp.vim'
+
+" Split navigation that works with tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+" Fugitive: Git from within Vim
+Plug 'tpope/vim-fugitive'
+
+filetype plugin indent on                   " required!
+call plug#end()
