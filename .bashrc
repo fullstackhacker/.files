@@ -15,4 +15,4 @@ function current_git_branch {
 export CLICOLOR=1
 export PS1="\[\033[36m\]\h:\w \[\033[33m\]\$(current_git_branch)\[\033[00m\]$\[\033[00m\] "
 
-source ~/.bashrc
+source ~/.bash_profile
