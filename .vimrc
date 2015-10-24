@@ -21,7 +21,6 @@ set smartindent "Remembers previous indent when creating new lines
 "Choose between tabs and spaces for indentation by uncommenting one of
 "these two. Expand for spaces, noexpand for tabs:"
 set expandtab
-set mouse=a 
 
 " visual stuff
 set cursorline "Horizontal Current Line
@@ -39,6 +38,11 @@ set incsearch "Search as things are entered
 " Key mappings
 "Use jj instead of escape in insert mode
 inoremap jj <Esc>`^
+
+set mouse=a 
+if &term =~ '^screen'
+    set ttymouse=xterm2
+endif
 
 "Turn on plugin & indentation support for specific filetypes
 " ----------------------------------------------------------------------------
@@ -60,11 +64,25 @@ Plug 'captbaritone/molokai'
 " Fuzzy file opener
 Plug 'kien/ctrlp.vim'
 
-" Split navigation that works with tmux
+" Tmux Nav: Split navigation that works with tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 " Fugitive: Git from within Vim
 Plug 'tpope/vim-fugitive'
+
+" Jedi: autocompletion library
+Plug 'davidhalter/jedi-vim'
+
+" ZoomWin: zoom into vim windows
+Plug 'vim-scripts/ZoomWin'
+
+" Alias: allows aliases in vim
+Plug 'vim-scripts/cmdalias.vim'
+
+" code linters
+Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }
+let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
+let g:syntastic_python_pep8_args="--ignore=E501,E121,E125,E126,E128,C0111"
 
 filetype plugin indent on                   " required!
 call plug#end()
