@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/mkapadia/projects/HearsayLabs/fanmgmt/static/js/stream'
-let g:netrw_dirhist_2='/home/mkapadia/projects/HearsayLabs/fanmgmt/workflow/urls'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/mkapadia/projects/HearsayLabs/fanmgmt/fmlogging'
+let g:netrw_dirhist_2='/home/mkapadia/projects/HearsayLabs/fanmgmt/filters'
+let g:netrw_dirhist_3='/home/mkapadia/projects/HearsayLabs/fanmgmt/debug/urls'
+let g:netrw_dirhist_4='/home/mkapadia/.files/.vim/plugged'
+let g:netrw_dirhist_5='/home/mkapadia/projects/HearsayLabs/fanmgmt/usermgmt/urls/api'
+let g:netrw_dirhist_6='/home/mkapadia/projects/HearsayLabs/fanmgmt/filters/urls'
+let g:netrw_dirhist_7='/home/mkapadia/projects/HearsayLabs/fanmgmt/workflow/history/service'

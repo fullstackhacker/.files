@@ -70,19 +70,26 @@ Plug 'christoomey/vim-tmux-navigator'
 " Fugitive: Git from within Vim
 Plug 'tpope/vim-fugitive'
 
-" Jedi: autocompletion library
-Plug 'davidhalter/jedi-vim'
-
 " ZoomWin: zoom into vim windows
 Plug 'vim-scripts/ZoomWin'
 
 " Alias: allows aliases in vim
 Plug 'vim-scripts/cmdalias.vim'
 
+" NERDTree: filesystem for vim
+Plug 'scrooloose/nerdtree'
+
 " code linters
 Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }
 let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
-let g:syntastic_python_pep8_args="--ignore=E501,E121,E125,E126,E128,C0111"
+let g:syntastic_javascript_checkers = ['eslint']
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+        let g:syntastic_javascript_eslint_exec = local_eslint
+endif
 
 filetype plugin indent on                   " required!
 call plug#end()

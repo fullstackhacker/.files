@@ -1,11 +1,30 @@
-#always display all files and permissions as a list
+#aliases for regular stuff
 alias ls="ls -lta"
 
-#edit bash_profile
-alias vimb="vim ~/.bash_profile"
+#git aliases
+alias gg="git grep"
+alias checkout="git checkout"
+alias fetch="git fetch upstream"
+alias rebase="git rebase upstream/master"
+alias fr="fetch && rebase"
+alias status="git status"
+alias branch="git branch"
+alias add="git add ."
+alias commit="git commit -m"
 
-#quick source
+
+#quickly edit and source bashrc
+alias vimb="vim ~/.bashrc" 
 alias s="source ~/.bash_profile"
+
+# Fix SSH auth socket location so agent forwarding works with tmux
+# Predictable SSH authentication socket location.
+SOCK="/tmp/ssh-agent-$USER-screen"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+then
+    ln -sf $SSH_AUTH_SOCK $SOCK
+    export SSH_AUTH_SOCK=$SOCK
+fi
 
 #show current git branch
 function current_git_branch {
@@ -13,6 +32,4 @@ function current_git_branch {
 }
 
 export CLICOLOR=1
-export PS1="\[\033[36m\]\h:\w \[\033[33m\]\$(current_git_branch)\[\033[00m\]$\[\033[00m\] "
-
-source ~/.bash_profile
+export PS1="\\$ \[\e[1;34m\]\u@\h\[\e[m\] - \[\e[1;34m\]\w\[\e[m\] - \[\033[33m\]\$(current_git_branch)\[\033[00m\] \n> \[$(tput sgr0)\]"
