@@ -58,10 +58,13 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Colorschemes
-Plug 'captbaritone/molokai'
+" Jedi Vim: Vim Autocompletion
+Plug 'davidhalter/jedi-vim'
 
-" Fuzzy file opener
+" Ag: Searching in vim 
+Plug 'rking/ag.vim'
+
+" CtrlP: Fuzzy file opener
 Plug 'kien/ctrlp.vim'
 
 " Tmux Nav: Split navigation that works with tmux
