@@ -12,6 +12,10 @@ alias branch="git branch"
 alias add="git add ."
 alias commit="git commit -m"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
 
 #quickly edit and source bashrc
 alias vimb="vim ~/.bashrc" 
