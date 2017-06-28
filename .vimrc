@@ -9,9 +9,6 @@ set history=500 "Sets undo history size
 set ruler "Sets up status bar
 set laststatus=2 "Always keeps the status bar active
 set number "Turns on line numbering
-set t_Co=256 "Sets Vim to use 256 colors
-colorscheme molokai
-
 " Indentation settings
 set tabstop=2 "Sets display width of tabs
 set shiftwidth=2 "Sets indentation width
@@ -84,6 +81,26 @@ Plug 'vim-scripts/cmdalias.vim'
 " NERDTree: filesystem for vim
 Plug 'scrooloose/nerdtree'
 
+" Colorschemes: colorschemes for vim
+Plug 'flazz/vim-colorschemes'
+
+" Prettier: Make JS Pretty Again
+Plug 'mitermayer/vim-prettier', {
+            \ 'do': 'npm install',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
+
+" Prettier: Config
+let g:prettier#config#print_width = 110
+let g:prettier#config#tab_width = 4
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'none'
+
+" Prettier: disable autoformat only files with @format
+let g:prettier#autoformat = 0
+" Prettier: run prettier on files before writing out the vim buffer to files
+" with these extensions
+autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.less Prettier
+
 " code linters
 Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }
 let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
@@ -98,3 +115,5 @@ endif
 
 filetype plugin indent on                   " required!
 call plug#end()
+
+colorscheme Monokai
