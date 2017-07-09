@@ -35,8 +35,7 @@ set smartcase "Unless you put some caps in your search term
 set incsearch "Search as things are entered
 
 " Key mappings
-"Use jj instead of escape in insert mode
-inoremap jj <Esc>`^
+"Use jj instead of escape in insert mode inoremap jj <Esc>`^
 
 set mouse=a 
 if &term =~ '^screen'
@@ -91,7 +90,7 @@ Plug 'mitermayer/vim-prettier', {
 
 " Prettier: Config
 let g:prettier#config#print_width = 110
-let g:prettier#config#tab_width = 4
+let g:prettier#config#tab_width = 2
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 
