@@ -10,8 +10,8 @@ set ruler "Sets up status bar
 set laststatus=2 "Always keeps the status bar active
 set number "Turns on line numbering
 " Indentation settings
-set tabstop=2 "Sets display width of tabs
-set shiftwidth=2 "Sets indentation width
+set tabstop=4 "Sets display width of tabs
+set shiftwidth=4 "Sets indentation width
 set autoindent "Turns on auto-indenting
 set smartindent "Remembers previous indent when creating new lines
 
@@ -38,10 +38,15 @@ set incsearch "Search as things are entered
 "Use jj instead of escape in insert mode
 inoremap jj <Esc>`^
 
+" Enable mouse 
 set mouse=a 
 if &term =~ '^screen'
     set ttymouse=xterm2
 endif
+
+" Close window if nerd tree is the last thing open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 "Turn on plugin & indentation support for specific filetypes
 " ----------------------------------------------------------------------------
@@ -84,22 +89,33 @@ Plug 'scrooloose/nerdtree'
 " Colorschemes: colorschemes for vim
 Plug 'flazz/vim-colorschemes'
 
+" AutoPep8: Make PY Pretty Again
+Plug 'tell-k/vim-autopep8'
+
 " Prettier: Make JS Pretty Again
 Plug 'mitermayer/vim-prettier', {
-            \ 'do': 'npm install',
-            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
+           \ 'do': 'npm install',
+           \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'],
+           \ 'tag': '0.0.7'}
 
 " Prettier: Config
 let g:prettier#config#print_width = 110
 let g:prettier#config#tab_width = 4
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
-
-" Prettier: disable autoformat only files with @format
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'true'
 let g:prettier#autoformat = 0
-" Prettier: run prettier on files before writing out the vim buffer to files
-" with these extensions
-autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.less Prettier
+
+" Prettier: run prettier on files before writing out the vim buffer to files with these extensions
+autocmd BufWritePre *.js,*.jsx Prettier
+
+" AutoPep8: config
+let g:autopep8_disable_show_diff=1
+let g:autopep8_ignore="E501,E121,E125,E126,E128"
+
+" AutoPep8: run autopepe8 obefore writng out the vim buffer to files with py
+autocmd BufWritePre *.py Autopep8
 
 " code linters
 Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }

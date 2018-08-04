@@ -35,5 +35,9 @@ function current_git_branch {
     echo `git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'`
 }
 
+export MAKE_MY_JS_PRETTY=1
+shopt -s globstar
+
 export CLICOLOR=1
 export PS1="\\$ \[\e[1;34m\]\u@\h\[\e[m\] - \[\e[1;34m\]\w\[\e[m\] - \[\033[33m\]\$(current_git_branch)\[\033[00m\] \n> \[$(tput sgr0)\]"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
